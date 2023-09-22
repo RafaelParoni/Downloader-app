@@ -10,6 +10,10 @@
     border-bottom: #1ED760 1px solid;
     padding-inline: 5px;
   }
+  ::selection {
+    color: #000;
+    background: #1ED760;
+  }
   .SubTitleSpotify {
     text-align: center;
   }
@@ -17,6 +21,7 @@
     border-bottom: #1ED760 1px solid;
     padding-inline: 5px;
     color: #1ED760;
+    cursor: pointer;
   }
   .SpotifyPage {
     background-color: #121212;

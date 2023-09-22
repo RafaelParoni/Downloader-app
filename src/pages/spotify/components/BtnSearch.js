@@ -1,7 +1,8 @@
 
 import '../spotify.css'
-import {FcSearch, FcHighPriority, FcSynchronize, FcDownload, FcMusic} from 'react-icons/fc'
-import {FaPlay, FaPause, FaSearch,FaHeadphonesAlt, FaRedo, FaLongArrowAltDown} from 'react-icons/fa'
+import { FcHighPriority} from 'react-icons/fc'
+import {FaPlay, FaPause, FaSearch,FaRedo, FaLongArrowAltDown} from 'react-icons/fa'
+import {SiSpotify} from 'react-icons/si'
 import axios from 'axios'
 import {useState} from 'react'
 var ValidMusuic = 'invalid'
@@ -112,7 +113,7 @@ function HomeSearch() {
   return (
     <>
     <h1 className='TitleSpotify'> Spotify Downloader </h1>
-    <h3 className='SubTitleSpotify'>Copie o link da musica pelo <a onClick={href}>Spotify</a></h3>
+    <h3 className='SubTitleSpotify'>Copie o link da musica pelo <a onClick={href}> <SiSpotify/> Spotify</a></h3>
     <div className='Spotify-Search'><input type="url" placeholder='Link Spotify Music' id='SpotifyNameInput' onKeyDown={event => {if(event.key === 'Enter'){SearchMusic()}}}value={input} onChange={(e) => setInput(e.target.value)} />
      <button onClick={()=> SearchMusic()}>
         <a id='LoadSearch' ><FaRedo/></a>
