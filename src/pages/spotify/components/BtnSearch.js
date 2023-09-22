@@ -34,15 +34,18 @@ function HomeSearch() {
     if(input === ''){
 
     }
-    setInput('')
-    setName({})
+
+    if(input.includes('https://open.spotify.com/intl-pt/track/') === false){
+      alert('Parece que o seu link esta incorreto! \n Tente um link com o comeco parecido com: "open.spotify.com/intl-pt/track/"  ')
+      setInput('')
+      return
+    }
     ValidMusuic = 'invalid'
     checkUrl(input)
     if(ValidUrl === 'invalid'){
-
+      setInput('')
       return
     }
-    console.log(input)
     const options = {
       method: 'GET',
       url: 'https://spotify-downloader-api.p.rapidapi.com/Home/Download',
@@ -55,6 +58,8 @@ function HomeSearch() {
       }
     };
     try {
+      setInput('')
+      setName({})
       const response = await axios.request(options);
       setName(response.data)
       console.log(response.data)
@@ -63,6 +68,8 @@ function HomeSearch() {
     } catch (error) {
       console.error(error);
       ValidMusuic = 'NotFound'
+      setInput('')
+      setName({})
     }
     
   }
@@ -77,38 +84,38 @@ function HomeSearch() {
       document.getElementById('buttonDownload').style.borderBottom = '3px solid #000'
       document.getElementById(`DownloadOn`).style.display = 'none'
       document.getElementById(`DownloadDefault`).style.display = 'flex'
-  }, 4000);
+    }, 4000);
 
   }
-
   function checkUrl(string) {
-    try {
+   try {
      let url = new URL(string)
      ValidUrl = 'valid'
 
    } catch(err) {
        alert('Invalid URL!')
    }
- }
- function PreviewMusic(){
-  var music = document.getElementById("MusicPreview"); 
-  music.volume = 0.01;
-  if(playMuisc == false){
-    document.getElementById('PauseMusic').style.display = 'flex'
-    document.getElementById('playMusic').style.display = 'none'
-    music.play();
-    playMuisc = true
-  }else{
-    document.getElementById('playMusic').style.display = 'flex'
-    document.getElementById('PauseMusic').style.display = 'none'
-    music.pause()
-    playMuisc = false
   }
+  function PreviewMusic(){
+    var music = document.getElementById("MusicPreview"); 
+    music.volume = 0.01;
+    if(playMuisc == false){
+      document.getElementById('PauseMusic').style.display = 'flex'
+      document.getElementById('playMusic').style.display = 'none'
+      music.play();
+      playMuisc = true
+    }else{
+      document.getElementById('playMusic').style.display = 'flex'
+      document.getElementById('PauseMusic').style.display = 'none'
+      music.pause()
+      playMuisc = false
+    }
   
- }
- function href(){
-  window.open('https://open.spotify.com/intl-pt')
- }
+  }
+  function href(){
+    window.open('https://open.spotify.com/intl-pt')
+  }
+
 
   return (
     <>
