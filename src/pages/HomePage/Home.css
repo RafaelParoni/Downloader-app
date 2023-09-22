@@ -1,0 +1,52 @@
+/* 
+  EAEFEF
+  959BBD
+  7E45F0
+  6D6D9E
+  241531
+*/
+
+.HomePage {
+  background-color: #241531;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #fff;
+}
+.options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-gap: 15px;
+  padding: 15px;
+  flex-wrap: wrap;
+}
+.BtnTyps {
+  background-color: #6D6D9E;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0px 0px 5px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 5px;
+}
+.BtnTyps:hover{
+  transition: 1s;
+  transform: scale(1.2);
+}
+.BtnTypsDisable {
+  cursor: no-drop;
+  background-color: #6D6D9E;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 5px;
+  filter: opacity(0.5);
+}

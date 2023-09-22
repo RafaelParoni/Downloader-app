@@ -1,0 +1,80 @@
+/* 
+  EAEFEF
+  959BBD
+  7E45F0
+  6D6D9E
+  241531
+*/
+
+.TiktokPage {
+  background-color: #241531;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.tiktok-Search {
+  background-color: #fff;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+  border-radius: 5px;
+  width: 300px;
+  height: 50px;
+}
+.tiktok-Search input{
+  outline: none;
+  border: none;
+  color: #000;
+  width: 100%;
+  font-size: 25px;
+}
+.tiktok-Search button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  font-size: 30px;
+  cursor: pointer;
+}
+.tiktok-Search button:hover{
+  transition: 0.5s;
+  transform: scale(1.2);
+  background-color: #7E45F0;
+}
+.tiktok-Search input::placeholder {
+  color: #666666;
+}
+.tiktok-Search input:focus{
+  outline: none;
+}
+.tiktok-Search input:focus::placeholder{
+  color: transparent;
+}
+#LoadSearch{
+  display: none;
+  animation-name: Load;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+#DefaultSearch {
+  display: flex;
+}
+@keyframes Load {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(365deg);
+  }
+
+  
+}
