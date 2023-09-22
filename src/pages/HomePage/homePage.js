@@ -16,7 +16,7 @@ function HomePage() {
           <YoutubeBtn/>
           <TiktokBtn/>
         </div>
-        <ComeBackBtn/>
+        
     </div>
   );
 }
