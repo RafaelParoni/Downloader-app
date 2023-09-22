@@ -8,7 +8,7 @@ function SpotifyBtn(){
     }
     return(
         <>
-        <p  className='BtnTypsDisable youtube'  onClick={href} > <SiYoutube/> Youtube</p>
+        <p  className='BtnTypsDisable youtube'  > <SiYoutube/> Youtube</p>
         </>
     )
 }

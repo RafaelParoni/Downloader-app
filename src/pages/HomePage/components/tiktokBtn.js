@@ -7,7 +7,7 @@ function SpotifyBtn(){
     }
     return(
         <>
-        <p className='BtnTypsDisable tiktok'   onClick={href}> <SiTiktok/> Tiktok</p>
+        <p className='BtnTypsDisable tiktok' > <SiTiktok/> Tiktok</p>
         </>
     )
 }
