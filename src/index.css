@@ -12,8 +12,9 @@ body {
   color: #000;
   border: none;
   position: fixed;
-  right: 5px;
-  bottom: 5px;
+  left: 50%;
+  bottom: 15%;
+  transform: translate(-50%);
   font-size: 25px;
   padding: 5px;
   border-radius: 5px;
