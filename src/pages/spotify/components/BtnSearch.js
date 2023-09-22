@@ -1,8 +1,11 @@
 
 import '../spotify.css'
-import {FcSearch, FcSynchronize, FcDownload, FcMusic} from 'react-icons/fc'
+import {FcSearch, FcHighPriority, FcSynchronize, FcDownload, FcMusic} from 'react-icons/fc'
+import {FaPlay, FaPause, FaSearch,FaHeadphonesAlt, FaRedo, FaLongArrowAltDown} from 'react-icons/fa'
 import axios from 'axios'
 import {useState} from 'react'
+var ValidMusuic = 'invalid'
+var playMuisc = false
 
 
 function HomeSearch() {
@@ -27,17 +30,21 @@ function HomeSearch() {
       alert('Digite o nome da musica!')
       return;
     }
-    if(input == ''){
+    if(input === ''){
 
     }
+    setInput('')
+    setName({})
+    ValidMusuic = 'invalid'
     checkUrl(input)
-    if(ValidUrl == 'invalid'){
+    if(ValidUrl === 'invalid'){
 
       return
     }
+    console.log(input)
     const options = {
       method: 'GET',
-      url: 'https://spotify-downloader-api.p.rapidapi.com/Home/GetSpotifyUserInfo',
+      url: 'https://spotify-downloader-api.p.rapidapi.com/Home/Download',
       params: {
         Tracklink: input
       },
@@ -45,13 +52,16 @@ function HomeSearch() {
         'X-RapidAPI-Key': '4d1fc03470msh98ed2d469a33f37p102184jsn7cab8e913b66',
         'X-RapidAPI-Host': 'spotify-downloader-api.p.rapidapi.com'
       }
-    };   
+    };
     try {
       const response = await axios.request(options);
       setName(response.data)
+      console.log(response.data)
+      ValidMusuic = 'valid'
+      
     } catch (error) {
       console.error(error);
-      
+      ValidMusuic = 'NotFound'
     }
     
   }
@@ -59,37 +69,76 @@ function HomeSearch() {
   function DownloadMusic(){
     document.getElementById('DownloadOn').style.display = 'flex'
     document.getElementById('DownloadDefault').style.display = 'none'
-
+    document.getElementById('buttonDownload').style.border = 'none'
     var url = MusicName.Downloadurl
     window.location = url
+    setTimeout(function(){
+      document.getElementById('buttonDownload').style.borderBottom = '3px solid #000'
+      document.getElementById(`DownloadOn`).style.display = 'none'
+      document.getElementById(`DownloadDefault`).style.display = 'flex'
+  }, 4000);
 
-    document.getElementById(`DownloadOn`).style.display = 'none'
-    document.getElementById(`DownloadDefault`).style.display = 'flex'
   }
 
   function checkUrl(string) {
     try {
-      let url = new URL(string)
+     let url = new URL(string)
      ValidUrl = 'valid'
 
    } catch(err) {
        alert('Invalid URL!')
    }
  }
-
+ function PreviewMusic(){
+  var music = document.getElementById("MusicPreview"); 
+  music.volume = 0.01;
+  if(playMuisc == false){
+    document.getElementById('PauseMusic').style.display = 'flex'
+    document.getElementById('playMusic').style.display = 'none'
+    music.play();
+    playMuisc = true
+  }else{
+    document.getElementById('playMusic').style.display = 'flex'
+    document.getElementById('PauseMusic').style.display = 'none'
+    music.pause()
+    playMuisc = false
+  }
+  
+ }
+ function href(){
+  window.open('https://open.spotify.com/intl-pt')
+ }
 
   return (
     <>
-    <div className='Spotify-Search'><input type="url" placeholder='Link Spotify Music' id='SpotifyNameInput' onKeyDown={event => {if(event.key === 'Enter'){SearchMusic()}}}value={input} onChange={(e) => setInput(e.target.value)} /> <button onClick={()=> SearchMusic()}><a id='LoadSearch' ><FcSynchronize/></a> <a id='DefaultSearch' ><FcSearch/></a></button> </div>
+    <h1 className='TitleSpotify'> Spotify Downloader </h1>
+    <h3 className='SubTitleSpotify'>Copie o link da musica pelo <a onClick={href}>Spotify</a></h3>
+    <div className='Spotify-Search'><input type="url" placeholder='Link Spotify Music' id='SpotifyNameInput' onKeyDown={event => {if(event.key === 'Enter'){SearchMusic()}}}value={input} onChange={(e) => setInput(e.target.value)} />
+     <button onClick={()=> SearchMusic()}>
+        <a id='LoadSearch' ><FaRedo/></a>
+        <a id='DefaultSearch' ><FaSearch/></a>
+      </button> 
+    </div>
 
-    {Object.keys(MusicName).length > 0 &&(
+    {ValidMusuic === 'valid'  &&(
       <div className='ResultMusic'>
         <div>
-          <p className='ResultMusic-icon'><FcMusic/></p>
+          <audio id='MusicPreview'><source src={MusicName.PreviewUrl} /></audio>
+          <p onClick={PreviewMusic} className='ResultMusic-icon'> <a id='playMusic'><FaPlay/></a> <a id='PauseMusic'><FaPause/></a> <a className='PreviewText'><strong> Preview </strong></a> </p>
           <a className='ResultMusic-details'>
-            <p>{MusicName.SongTitle}</p>
-            <p>Artist: {MusicName.Artist[0].Name}</p>
-            <button onClick={DownloadMusic} ><a id='DownloadDefault'><FcDownload/></a><a id='DownloadOn'><FcSynchronize/></a></button>
+            <p> <b> <strong>{MusicName.SongTitle} </strong></b></p>
+            <p> <b> <strong> Artist: {MusicName.Artist[0].Name} </strong></b></p>
+            <button id='buttonDownload' onClick={DownloadMusic} ><a id='DownloadDefault'><FaLongArrowAltDown/></a><a id='DownloadOn'><FaRedo/></a></button>
+          </a>
+        </div>
+      </div>    
+    )}
+    {ValidMusuic === 'NotFound'  &&(
+      <div className='NotFoundMusic'>
+        <div>
+          <p className='NotFoundMusic-icon'><FcHighPriority/></p>
+          <a className='NotFoundMusic-details'>
+            <p>Not Found!</p>
           </a>
         </div>
       </div>    

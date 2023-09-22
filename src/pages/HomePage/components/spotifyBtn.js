@@ -6,7 +6,7 @@ function SpotifyBtn(){
     }
     return(
         <>
-        <p className='BtnTyps'  onClick={href}> <SiSpotify/> Spotify</p>
+        <p className='BtnTyps spotify'  onClick={href}> <SiSpotify/> Spotify</p>
         </>
     )
 }

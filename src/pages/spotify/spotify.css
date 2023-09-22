@@ -5,15 +5,28 @@
   6D6D9E
   241531
 */
-
-.SpotifyPage {
-    background-color: #241531;
+  .TitleSpotify {
+    color: #1ED760;
+    border-bottom: #1ED760 1px solid;
+    padding-inline: 5px;
+  }
+  .SubTitleSpotify {
+    text-align: center;
+  }
+  .SubTitleSpotify a {
+    border-bottom: #1ED760 1px solid;
+    padding-inline: 5px;
+    color: #1ED760;
+  }
+  .SpotifyPage {
+    background-color: #121212;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: #fff;
+    font-family: Courier, monospace;
   }
   .Spotify-Search {
     background-color: #fff;
@@ -44,11 +57,13 @@
     padding: 5px;
     font-size: 30px;
     cursor: pointer;
+    color: #1ED760;
   }
   .Spotify-Search button:hover{
     transition: 0.5s;
     transform: scale(1.2);
-    background-color: #7E45F0;
+    background-color: #1ED760;
+    color: #000;
   }
   .Spotify-Search input::placeholder {
     color: #666666;
@@ -59,6 +74,9 @@
   .Spotify-Search input:focus::placeholder{
     color: transparent;
   }
+  .PreviewText {
+    font-size: 20px;
+  }
   #LoadSearch{
     display: none;
     animation-name: Load;
@@ -68,7 +86,6 @@
   #DefaultSearch {
     display: flex;
   }
-
   @keyframes Load {
     from {
       transform: rotate(0deg);
@@ -82,19 +99,23 @@
     padding: 5px;
     border-radius: 5px;
     grid-gap: 15px;
+    width: 500px;
     display: flex;
     justify-content: center;
     align-items: baseline;
   }
   .ResultMusic div {
-    background-color: rgba(000, 000, 000, 0.7);
+    background-color: #1ED760;
+    font-family: Courier;
     display: flex;
     padding: 5px;
+    border-radius: 5px;
     justify-content: start;
     align-items:start;
     grid-gap: 5px;
-    width: 500px;
+    width: 100%;
     height: auto;
+    color: #000;
   }
   .ResultMusic-details {
     display: flex;
@@ -105,14 +126,14 @@
     padding-right: 5px;
     padding: 0 0 10px 0;
   }
+  .ResultMusic-details p {
+    font-size: 17px;
+  }
   .ResultMusic-details p:nth-child(2){
-    color: #fff;
-
     margin: 0;
     margin-bottom: 15px;
   }
   .ResultMusic-details p:first-child{
-    color: #fff;
     margin: 5px 0 15px 0 ;
   }
   .ResultMusic-details button{
@@ -131,7 +152,23 @@
     transform: scale(1.2);
   }
   .ResultMusic-icon{
-    font-size: 35px;
+    font-size: 30px;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+  }
+  #buttonDownload{
+    border-bottom: 3px solid #000;
+    border-radius: 0px;
+    width: auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   #DownloadOn{
     display: none;
@@ -141,4 +178,38 @@
   }
   #DownloadDefault{
     display: flex;
+  }
+  #playMusic{
+    display: flex;
+  }
+  #PauseMusic {
+    display: none;
+  }
+  .NotFoundMusic {
+    padding: 5px;
+    border-radius: 5px;
+    grid-gap: 15px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+  }
+  .NotFoundMusic div {
+    background-color: #1ED760;
+    font-family: Courier;
+    display: flex;
+    padding: 5px;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 5px;
+    font-size: 25px;
+    width: 100%;
+    height: auto;
+    color: #000;
+  }
+  @media(max-width: 750px){
+    .ResultMusic {
+      width: 90%;
+    }
   }

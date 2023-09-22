@@ -7,7 +7,7 @@
 */
 
 .HomePage {
-  background-color: #241531;
+  background-color: #121212;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -24,7 +24,7 @@
   flex-wrap: wrap;
 }
 .BtnTyps {
-  background-color: #6D6D9E;
+  font-size: 25px;
   padding: 5px;
   border-radius: 5px;
   cursor: pointer;
@@ -34,13 +34,25 @@
   align-items: center;
   grid-gap: 5px;
 }
+.spotify {
+  background-color: #1ED760;
+  color: #000;
+}
+.youtube {
+  background-color: #d71e1e;
+  color: #000;
+}
+.tiktok {
+  background-color: #1eacd7;
+  color: #000;
+}
 .BtnTyps:hover{
   transition: 1s;
   transform: scale(1.2);
 }
 .BtnTypsDisable {
   cursor: no-drop;
-  background-color: #6D6D9E;
+  font-size: 25px;
   padding: 5px;
   border-radius: 5px;
   box-shadow: 0px 0px 5px 0px;

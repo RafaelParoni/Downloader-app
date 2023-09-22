@@ -7,8 +7,9 @@ body {
   background-color: #282c34;
 }
 .ComeBackBtn {
-  background-color: #6D6D9E;
-  color: #fff;
+  background-color: #fff;
+  filter: opacity(0.5);
+  color: #000;
   border: none;
   position: fixed;
   right: 5px;
@@ -17,6 +18,10 @@ body {
   padding: 5px;
   border-radius: 5px;
   display: flex;
+}
+.ComeBackBtn:hover{
+  transition: 0.6s;
+  filter: opacity(1.0);
 }
 @media (max-width: 700px){ 
   .ComeBackBtn  a {

@@ -9,7 +9,7 @@ function ComeBackBtn() {
 
   return (
     <>
-    <button onClick={href} className='ComeBackBtn'> <BiArrowBack color='fff'/> <a >Come back</a> </button>
+    <button onClick={href} className='ComeBackBtn'> <BiArrowBack/> <a >Come back</a> </button>
     </>
   );
 }
