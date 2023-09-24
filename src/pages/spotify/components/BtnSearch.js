@@ -31,9 +31,6 @@ function HomeSearch() {
       alert('Digite o nome da musica!')
       return;
     }
-    if(input === ''){
-
-    }
 
     if(input.includes('https://open.spotify.com/intl-pt/track/') === false){
       alert('Parece que o seu link esta incorreto! \n Tente um link com o comeco parecido com: "open.spotify.com/intl-pt/track/"  ')
@@ -141,7 +138,7 @@ function HomeSearch() {
         </div>
       </div>    
     )}
-    {ValidMusuic === 'NotFound'  &&(
+    {ValidMusuic == 'NotFound'  &&(
       <div className='NotFoundMusic'>
         <div>
           <p className='NotFoundMusic-icon'><FcHighPriority/></p>
