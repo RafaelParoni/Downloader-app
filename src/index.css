@@ -30,9 +30,4 @@ body {
   transition: 0.6s;
   filter: opacity(1.0);
 }
-@media (max-width: 700px){ 
-  .ComeBackBtn  a {
-    display: none;
-  }
-}
 

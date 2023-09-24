@@ -9,8 +9,8 @@ function HomePage() {
   document.title = 'Home'
   return (
     <div className="HomePage">
-        <h1>Home</h1>
-        <h3>choose what you want</h3>
+        <h1>Início</h1>
+        <h3>escolha uma opção que você deseja:</h3>
         <div className='options'>
           <SpotifyBtn/>
           <YoutubeBtn/>
