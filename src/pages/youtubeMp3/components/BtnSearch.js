@@ -56,6 +56,14 @@ function HomeSearch() {
           
           SearchMp4('enabled')
           SearchMp3('enabled')
+        }else if(input.includes('https://youtube.com/shorts/') === true ){ // https://youtube.com/shorts/PSRuftQkSnw?si=HVEhgBeyBFQkZ9rc
+          var StartId = input.indexOf('s/')
+          var FinalId = input.lastIndexOf('?si=')
+          StartId = StartId + 2
+          id = input.slice(StartId, FinalId)
+          
+          SearchMp4('enabled')
+          SearchMp3('enabled')
         }else{
           ValidResponse = 'invalid'
           setTimeout(function(){
