@@ -37,13 +37,19 @@ function HomeSearch() {
         }
 
         if(input.includes('https://www.youtube.com/watch?v=') === true){
+          var FinalId = ''
+          if(input.includes('&') === true){
+            FinalId = input.indexOf('&')
+          }else{
+            FinalId = input.length
+          }
           var StartId = input.lastIndexOf('?v=')
           StartId = StartId + 3
-          id = input.slice(StartId, input.length)
+          id = input.slice(StartId, FinalId)
           console.log(id)
           SearchMp4('enabled')
           SearchMp3('enabled')
-        }else if(input.includes('https://youtu.be/') === true ){
+        }else if(input.includes('https://youtu.be/') === true ){ 
           var FinalId = input.lastIndexOf('?si=')
           id = input.slice(17, FinalId)
           console.log(id)
@@ -56,7 +62,7 @@ function HomeSearch() {
           
           SearchMp4('enabled')
           SearchMp3('enabled')
-        }else if(input.includes('https://youtube.com/shorts/') === true ){ // https://youtube.com/shorts/PSRuftQkSnw?si=HVEhgBeyBFQkZ9rc
+        }else if(input.includes('https://youtube.com/shorts/') === true ){ 
           var StartId = input.indexOf('s/')
           var FinalId = input.lastIndexOf('?si=')
           StartId = StartId + 2
