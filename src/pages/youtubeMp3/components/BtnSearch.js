@@ -9,6 +9,7 @@ var videoInfo = ''
 var Mp4Info = ''
 var Mp3Info = ''
 var VideoName = ''
+var id = ''
 
 function HomeSearch() {
     const [input, setInput] = useState('');
@@ -34,24 +35,41 @@ function HomeSearch() {
           SearchAnimation('end')
           return;
         }
-    
-        if(input.includes('https://www.youtube.com/watch?v=') === false){
-          alert('Parece que o seu link esta incorreto! \n Tente um link com o comeco parecido com: "www.youtube.com/watch?v="  ')
-          setInput('')
+
+        if(input.includes('https://www.youtube.com/watch?v=') === true){
+          var StartId = input.lastIndexOf('?v=')
+          StartId = StartId + 3
+          id = input.slice(StartId, input.length)
+          console.log(id)
+          SearchMp4('enabled')
+          SearchMp3('enabled')
+        }else if(input.includes('https://youtu.be/') === true ){
+          var FinalId = input.lastIndexOf('?si=')
+          id = input.slice(17, FinalId)
+          console.log(id)
+          SearchMp4('enabled')
+          SearchMp3('enabled')
+        }else if(input.includes('https://www.youtube.com/shorts/') === true ){
+          var StartId = input.indexOf('s/')
+          StartId = StartId + 2
+          id = input.slice(StartId, input.length)
+          
+          SearchMp4('enabled')
+          SearchMp3('enabled')
+        }else{
           ValidResponse = 'invalid'
-          SearchAnimation('end')
+          setTimeout(function(){
+            SearchAnimation('end')
+          }, 2000);
           return
         }
-        ValidResponse = 'invalid'
-        SearchMp3()
-        SearchMp4()
-        setTimeout(function(){
-          SearchAnimation('end')
-        }, 2000);
-
+        SearchAnimation('end')
+        setInput('')
     }
-    async function SearchMp4(){
-      var id = input.slice(32, input.length)
+    async function SearchMp4(value){
+      if(value === 'disable'){
+        return
+      }
       const options = {
         method: 'GET',
         url: 'https://ytstream-download-youtube-videos.p.rapidapi.com/dl',
@@ -88,9 +106,11 @@ function HomeSearch() {
         console.error(error);
       }
     }
-    async function SearchMp3(){
-      var id = input.slice(32, input.length)
-
+    async function SearchMp3(value){
+      if(value === 'disable'){
+        
+        return
+      }
       const options = {
         method: 'GET',
         url: 'https://youtube-mp36.p.rapidapi.com/dl',
@@ -103,7 +123,6 @@ function HomeSearch() {
 
       try {
         const response = await axios.request(options);
-        console.log(response.data);
         Mp3Info = {
           VideoUrl: response.data.link,
         }
@@ -116,8 +135,8 @@ function HomeSearch() {
     }
 
   return (
-    
-    <>
+
+  <>
     <h1 className='YoutubeTitle'>Youtube Downloader</h1>
     <h3 className='SubTitleYoutube'>Copie o link da musica pelo <a onClick={()=> red()}> <SiYoutube/> Youtube.com</a></h3>
     <div className='Youtube-Search'> <input type='url' placeholder='Link Youtube Music ' onKeyDown={event => {if(event.key === 'Enter'){SearchVideo()}}}value={input} onChange={(e) => setInput(e.target.value)} /> <button onClick={()=> SearchVideo()}><a id='LoadButton'><FaRedo/></a> <a id='DefaultButton'><FaSearch/></a></button> </div>
@@ -129,13 +148,13 @@ function HomeSearch() {
             <h2 className='results-Title' onClick={()=> window.open(videoInfo.channelLink)}>{VideoName} </h2>
             <h4 className='results-NameChanel'> <a> {videoInfo.channelTitle} </a> </h4>
             <div className='results-Buttons'>
-              <button onClick={()=> window.open(Mp4Info.VideoUrl)}> <FaImage/> Mp4 </button>
-              <button onClick={()=> window.open(Mp3Info.VideoUrl)}> <FaVolumeUp/> Mp3 </button>
+              <button id='Mp4Button' onClick={()=> window.open(Mp4Info.VideoUrl)}> <FaImage/> Mp4 </button>
+              <button id='Mp3Button' onClick={()=> window.open(Mp3Info.VideoUrl)}> <FaVolumeUp/> Mp3 </button>
             </div>
           </div>
       </div>
     )}
-    </>
+  </>
   );
 }
 
