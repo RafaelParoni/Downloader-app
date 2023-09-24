@@ -186,7 +186,19 @@
   transition: 1s;
   transform: scale(1.2);
 }
-
+.results-VideoPreview a {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 25px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+#PreviewIconPlayed{
+  display: none;
+}
 @media(max-width: 750px){
   .resultsYoutube {
     flex-direction: column;

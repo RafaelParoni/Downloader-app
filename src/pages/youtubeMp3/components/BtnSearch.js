@@ -1,7 +1,7 @@
 
 import '../youtube.css'
 import {SiYoutube} from 'react-icons/si'
-import { FaSearch, FaRedo, FaVolumeUp, FaPlay, FaImage} from 'react-icons/fa'
+import { FaSearch, FaRedo, FaVolumeUp, FaPlay, FaImage, FaPause} from 'react-icons/fa'
 import {useState} from 'react'
 import axios from 'axios'
 var ValidResponse = 'invalid'
@@ -35,7 +35,7 @@ function HomeSearch() {
           SearchAnimation('end')
           return;
         }
-
+        ValidResponse = 'invalid'
         if(input.includes('https://www.youtube.com/watch?v=') === true){
           var FinalId = ''
           if(input.includes('&') === true){
@@ -52,7 +52,6 @@ function HomeSearch() {
         }else if(input.includes('https://youtu.be/') === true ){ 
           var FinalId = input.lastIndexOf('?si=')
           id = input.slice(17, FinalId)
-          console.log(id)
           SearchMp4('enabled')
           SearchMp3('enabled')
         }else if(input.includes('https://www.youtube.com/shorts/') === true ){
@@ -81,9 +80,11 @@ function HomeSearch() {
         setInput('')
     }
     async function SearchMp4(value){
+      var VideoPreview = document.getElementById('VideoPreview')
       if(value === 'disable'){
         return
       }
+
       const options = {
         method: 'GET',
         url: 'https://ytstream-download-youtube-videos.p.rapidapi.com/dl',
@@ -97,7 +98,6 @@ function HomeSearch() {
       try {
         
         const response = await axios.request(options);
-        ValidResponse = 'valid'
         setName(response)
         videoInfo = {
           thumbnail: response.data.thumbnail[2].url,
@@ -113,7 +113,19 @@ function HomeSearch() {
           VideoQuality: response.data.formats[2].qualityLabel,
           VideoUrl: response.data.formats[2].url,
         }
+        if(document.getElementById('VideoPreview') != null){
+          VideoPreview.removeAttribute('src')
+          VideoPreview.setAttribute('src', Mp4Info.VideoUrl)
+          VideoPreview.volume = 0.0
+        }
 
+        ValidResponse = 'valid'
+
+
+        setTimeout(function(){
+          var VideoPreview = document.getElementById('VideoPreview')
+          VideoPreview.volume = 0.0
+        }, 200)
         setInput('')
       } catch (error) {
         ValidResponse = 'NotFound'
@@ -144,6 +156,32 @@ function HomeSearch() {
         console.error(error);
       }
     }
+    function Preview(value){
+      var VideoPreview = document.getElementById('VideoPreviewControls')
+      var IconPlayed = document.getElementById('PreviewIconPlayed')
+      var IconPlay = document.getElementById('PreviewIconPlay')
+      if(value === 'start'){
+        VideoPreview.play()
+        IconPlayed.style.display = 'flex'
+        IconPlay.style.display = 'none'
+        setTimeout(function(){
+          VideoPreview.currentTime=0;
+        
+          IconPlayed.style.display = 'none'
+          IconPlay.style.display = 'flex'
+        },25000)
+        if(VideoPreview.currentTime > '25'){
+          VideoPreview.currentTime=0;
+  
+          IconPlayed.style.display = 'none'
+          IconPlay.style.display = 'flex'
+        }
+      }else if(value === 'end'){
+        VideoPreview.pause()
+        IconPlayed.style.display = 'none'
+        IconPlay.style.display = 'flex'
+      }
+    }
     function red(){
       window.open('https://www.youtube.com/')
     }
@@ -157,7 +195,12 @@ function HomeSearch() {
     
     {ValidResponse === 'valid' &&(
       <div className='resultsYoutube'>
-          <img className='results-Video' onClick={()=> window.open(videoInfo.channelLink)} src={videoInfo.thumbnail} />
+          <div className='results-VideoPreview'>
+            <a id='PreviewIconPlay'> <FaPlay color='fff' /> </a> <a id='PreviewIconPlayed'> <FaPause color='fff' /> </a>
+            <video id='VideoPreviewControls'  width='320' height='240'  onMouseEnter={()=> Preview('start')} onMouseLeave={()=> Preview('end')}  >
+              <source id='VideoPreview'  src={Mp4Info.VideoUrl} />
+            </video>
+          </div>
           <div className='results-Details'>
             <h2 className='results-Title' onClick={()=> window.open(videoInfo.channelLink)}>{VideoName} </h2>
             <h4 className='results-NameChanel'> <a> {videoInfo.channelTitle} </a> </h4>
