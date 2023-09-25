@@ -37,6 +37,8 @@ function HomeSearch() {
       setInput('')
       return
     }
+
+
     ValidMusuic = 'invalid'
     checkUrl(input)
     if(ValidUrl === 'invalid'){
@@ -109,15 +111,9 @@ function HomeSearch() {
     }
   
   }
-  function href(){
-    window.open('https://open.spotify.com/intl-pt')
-  }
-
 
   return (
     <>
-    <h1 className='TitleSpotify'> Spotify Downloader </h1>
-    <h3 className='SubTitleSpotify'>Copie o link da musica pelo <a onClick={href}> <SiSpotify/> Spotify</a></h3>
     <div className='Spotify-Search'><input type="url" placeholder='Link Spotify Music' id='SpotifyNameInput' onKeyDown={event => {if(event.key === 'Enter'){SearchMusic()}}}value={input} onChange={(e) => setInput(e.target.value)} />
      <button onClick={()=> SearchMusic()}>
         <a id='LoadSearch' ><FaRedo/></a>
