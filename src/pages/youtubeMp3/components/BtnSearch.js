@@ -182,15 +182,10 @@ function HomeSearch() {
         IconPlay.style.display = 'flex'
       }
     }
-    function red(){
-      window.open('https://www.youtube.com/')
-    }
 
   return (
 
   <>
-    <h1 className='YoutubeTitle'>Youtube Downloader</h1>
-    <h3 className='SubTitleYoutube'>Copie o link da musica pelo <a onClick={()=> red()}> <SiYoutube/> Youtube.com</a></h3>
     <div className='Youtube-Search'> <input type='url' placeholder='Link Youtube Music ' onKeyDown={event => {if(event.key === 'Enter'){SearchVideo()}}}value={input} onChange={(e) => setInput(e.target.value)} /> <button onClick={()=> SearchVideo()}><a id='LoadButton'><FaRedo/></a> <a id='DefaultButton'><FaSearch/></a></button> </div>
     
     {ValidResponse === 'valid' &&(
