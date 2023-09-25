@@ -12,12 +12,28 @@ function BtnSearch(){
   const [input, setInput] = useState('');
 
     function SearchAnimation(value){
-
+      
       if(value == 'start'){
         document.getElementById(`LoadSearch`).style.display = 'flex'
         document.getElementById(`DefaultSearch`).style.display = 'none' 
-        VideoInfo = {}
-        SearchVideo()
+        
+        if(input === ''){
+          alert('Nao digitou nada')
+          SearchAnimation('end')
+          return
+        }
+        if(input.includes('https://www.tiktok.com/@') === true){
+          VideoInfo = {}
+          SearchVideo()
+        }else if(input.includes('https://vm.tiktok.com/') === true){
+          VideoInfo = {}
+          SearchVideo()
+        }else{
+          alert('Link Incorreto!')
+          SearchAnimation('end')
+          return
+        }
+        
       }else if(value === 'end'){
         document.getElementById(`LoadSearch`).style.display = 'none'
         document.getElementById(`DefaultSearch`).style.display = 'flex' 
@@ -26,16 +42,6 @@ function BtnSearch(){
     }
     async function SearchVideo(){
       
-      if(input === ''){
-        alert('Nao digitou nada')
-        SearchAnimation('end')
-        return
-      }
-      if(input.includes('https://www.tiktok.com/@') === false){
-        alert('Link Incorreto!')
-        SearchAnimation('end')
-        return
-      }
 
       const options = {
         method: 'GET',
