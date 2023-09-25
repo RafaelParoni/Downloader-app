@@ -7,14 +7,52 @@
 */
 
 .TiktokPage {
-  background-color: #241531;
+  background-color: #121212;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   color: #fff;
+  font-family: Courier, monospace;
 }
+
+.TitleTiktok {
+    color: #6ECBD1;
+    border-bottom: #6ECBD1 1px solid;
+    padding-inline: 5px;
+}
+.TitleTiktok a {
+  color: #EF2457 ;
+  margin-inline: 10px;
+}
+.TitleTiktok a::selection {
+  color: #000 ;
+  background: #6ECBD1;
+}
+.TitleTiktok::selection {
+  color: #000;
+  background: #EF2457;
+}
+
+.SubTitleTiktok {
+  text-align: center;
+}
+.SubTitleTiktok::selection {
+  color: #000;
+  background: #EF2457;
+}
+.SubTitleTiktok a::selection {
+  color: #000;
+  background: #6ECBD1;
+}
+.SubTitleTiktok a {
+  border-bottom: #6ECBD1 1px solid;
+  padding-inline: 5px;
+  color: #EF2457;
+  cursor: pointer;
+}
+
 .tiktok-Search {
   background-color: #fff;
   padding: 5px;
@@ -25,6 +63,10 @@
   border-radius: 5px;
   width: 300px;
   height: 50px;
+}
+.tiktok-Search input::selection {
+  color: #000;
+  background: #6ECBD1;
 }
 .tiktok-Search input{
   outline: none;
@@ -44,11 +86,13 @@
   padding: 5px;
   font-size: 30px;
   cursor: pointer;
+  color: #EF2457;
 }
 .tiktok-Search button:hover{
   transition: 0.5s;
   transform: scale(1.2);
-  background-color: #7E45F0;
+  background-color: #6ECBD1;
+  color: #000;
 }
 .tiktok-Search input::placeholder {
   color: #666666;
@@ -68,13 +112,85 @@
 #DefaultSearch {
   display: flex;
 }
-@keyframes Load {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(365deg);
+
+.results {
+  padding: 10px 0 20px 0;
+  display: flex;
+  justify-content: center;
+}
+.ResultsVideo {
+  background-color: #EF2457;
+  padding: 5px 5px 0 0;
+  border-radius: 5px;
+  width: 550px;
+  height: auto;
+  display: flex;
+}
+.ResultsVideo-preview {
+  width: 170px;
+  height: auto;
+}
+.ResultsVideo-preview img {
+  height: 300px;
+}
+.ResultsVideo-details {
+  width: 100%;
+}
+.ResultsVideo-details h3 {
+  margin-left: 15px;
+}
+.ResultsVideo-channel{
+  display: flex;
+  grid-gap: 10px;
+  width: 100%;
+  height: auto;
+  padding: 5px 0 5px 0;
+  padding-left: 5px;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.ResultsVideo-channel img {
+  height: 55px;
+  border-radius: 50%;
+}
+.ResultsVideo-download {
+  width: 100%;
+  padding: 5px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 10px;
+
+}
+.ResultsVideo-download  button{
+  width: 100px;
+  height: 50px;
+  border-radius: 5px;
+  border: 1px solid #6ECBD1;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  cursor: pointer;
+}
+.ResultsVideo-download  button:hover{
+  transition: 1s;
+  transform: scale(1.1);
+}
+
+@media(max-width: 750px){
+  .ResultsVideo {
+    flex-direction: column;
+    width: min(80%, 384px);
+    justify-content: center;
+    align-items: center;
   }
 
-  
+  .results-NameChanel {
+    justify-content: center;
+  }
+  .results-Video {
+    border-radius: 5px;
+  }
+  .YoutubePage {
+    height: 120vh
+  }
 }
