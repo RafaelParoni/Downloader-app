@@ -74,9 +74,8 @@ function HomeSearch() {
           SearchMp3('enabled')
         }else{
           ValidResponse = 'invalid'
-          setTimeout(function(){
-            SearchAnimation('end')
-          }, 2000);
+          alert('Link Incorreto!')
+          SearchAnimation('end')
           return
         }
         SearchAnimation('end')
