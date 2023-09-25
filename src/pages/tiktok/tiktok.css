@@ -131,7 +131,7 @@
   height: auto;
 }
 .ResultsVideo-preview img {
-  height: 300px;
+  width: 170px;
 }
 .ResultsVideo-details {
   width: 100%;
