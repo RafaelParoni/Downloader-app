@@ -176,6 +176,36 @@
   transform: scale(1.1);
 }
 
+.NotFoundTiktok {
+  padding: 5px;
+  border-radius: 5px;
+  grid-gap: 15px;
+  width: min(500px, 90%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.NotFoundTiktok div p::selection {
+  background-color: #000;
+  color: #6ECBD1;
+}
+.NotFoundTiktok div {
+  background-color: #EF2457;
+  font-family: Courier;
+  display: flex;
+  padding: 5px;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 5px;
+  font-size: 25px;
+  width: 100%;
+  height: auto;
+  color: #000;
+}
+
+
 @media(max-width: 750px){
   .ResultsVideo {
     flex-direction: column;

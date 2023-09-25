@@ -1,6 +1,7 @@
 
 import '../tiktok.css'
 import { FaSearch, FaRedo, FaVideoSlash, FaVideo, FaFileAudio} from 'react-icons/fa'
+import {HiOutlineEmojiSad} from 'react-icons/hi'
 import { useState } from 'react';
 import axios from 'axios';
 
@@ -76,11 +77,10 @@ function BtnSearch(){
           originalVideo: response.data.OriginalWatermarkedVideo,
           videoId: response.data.videoid
         }
-        console.log(VideoInfo)
         validVideo = 'valid'
         SearchAnimation('end')
       } catch (error) {
-        console.error(error);
+        validVideo = 'NotFound'
         SearchAnimation('end')
       }
     }
@@ -114,6 +114,17 @@ function BtnSearch(){
         </div>
       </div>
     )}
+
+    {validVideo === 'NotFound' &&(
+        <div className='NotFoundTiktok'>
+          <div>
+            <p className='NotFoundTiktok-icon'><HiOutlineEmojiSad/></p>
+            <a className='NotFoundTiktok-details'>
+              <p>Not Found!</p>
+            </a>
+          </div>
+        </div> 
+      )}
     
     </>
   );
