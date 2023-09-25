@@ -210,10 +210,11 @@
     padding: 5px;
     border-radius: 5px;
     grid-gap: 15px;
-    width: 300px;
+    width: 550px;
     display: flex;
     justify-content: center;
-    align-items: baseline;
+    align-items: center;
+    flex-direction: column;
   }
   .NotFoundMusic div {
     background-color: #1ED760;
@@ -231,6 +232,9 @@
   }
   @media(max-width: 750px){
     .ResultMusic {
+      width: 90%;
+    }
+    .NotFoundMusic {
       width: 90%;
     }
   }

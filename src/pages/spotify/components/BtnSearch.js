@@ -7,6 +7,7 @@ import axios from 'axios'
 import {useState} from 'react'
 var ValidMusuic = 'invalid'
 var playMuisc = false
+var errorMessage = ''
 
 
 function HomeSearch() {
@@ -61,8 +62,16 @@ function HomeSearch() {
       setName({})
       const response = await axios.request(options);
       setName(response.data)
-      console.log(response.data)
-      ValidMusuic = 'valid'
+      console.log(response.data.ErrorMessage)
+      if(response.data.ErrorMessage !== undefined){
+        ValidMusuic = 'NotFound'
+        console.log(response.data.ErrorMessage)
+        errorMessage = response.data.ErrorMessage
+        errorMessage = errorMessage.includes("'")
+      }else{
+        ValidMusuic = 'valid'
+        console.log(response.data)
+      }
       
     } catch (error) {
       console.error(error);
