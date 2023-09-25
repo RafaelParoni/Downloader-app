@@ -2,6 +2,7 @@
 import '../youtube.css'
 import {SiYoutube} from 'react-icons/si'
 import { FaSearch, FaRedo, FaVolumeUp, FaPlay, FaImage, FaPause} from 'react-icons/fa'
+import {HiOutlineEmojiSad} from 'react-icons/hi'
 import {useState} from 'react'
 import axios from 'axios'
 var ValidResponse = 'invalid'
@@ -10,6 +11,8 @@ var Mp4Info = ''
 var Mp3Info = ''
 var VideoName = ''
 var id = ''
+var mp3Btn = ''
+var mp4Btn = ''
 
 function HomeSearch() {
     const [input, setInput] = useState('');
@@ -99,33 +102,35 @@ function HomeSearch() {
         
         const response = await axios.request(options);
         setName(response)
-        videoInfo = {
-          thumbnail: response.data.thumbnail[2].url,
-          channelTitle: response.data.channelTitle,
-          channelLink: input
-        }
-        VideoName = response.data.title
-        if(VideoName.length > 45){
-          VideoName = VideoName.slice(0,45)
-          VideoName = VideoName.concat("", "...")
-        }
-        Mp4Info = {
-          VideoQuality: response.data.formats[2].qualityLabel,
-          VideoUrl: response.data.formats[2].url,
-        }
-        if(document.getElementById('VideoPreview') != null){
-          VideoPreview.removeAttribute('src')
-          VideoPreview.setAttribute('src', Mp4Info.VideoUrl)
-          VideoPreview.volume = 0.0
+        if(response.data.status === 'fail'){
+          console.log('fail')
+          ValidResponse = 'NotFound'
+   
+        }else{
+          Mp4Info = {
+            VideoQuality: response.data.formats[2].qualityLabel,
+            VideoUrl: response.data.formats[2].url,
+          }
+          videoInfo = {
+            thumbnail: response.data.thumbnail[2].url,
+            channelTitle: response.data.channelTitle,
+            channelLink: input
+          }
+          VideoName = response.data.title
+          if(VideoName.length > 45){
+            VideoName = VideoName.slice(0,45)
+            VideoName = VideoName.concat("", "...")
+          }
+  
+          if(document.getElementById('VideoPreview') != null){
+            VideoPreview.removeAttribute('src')
+            VideoPreview.setAttribute('src', Mp4Info.VideoUrl)
+            VideoPreview.volume = 0.0
+          }
+  
+          ValidResponse = 'valid'
         }
 
-        ValidResponse = 'valid'
-
-
-        setTimeout(function(){
-          var VideoPreview = document.getElementById('VideoPreview')
-          VideoPreview.volume = 0.0
-        }, 200)
         setInput('')
       } catch (error) {
         ValidResponse = 'NotFound'
@@ -152,6 +157,8 @@ function HomeSearch() {
         Mp3Info = {
           VideoUrl: response.data.link,
         }
+
+        
       } catch (error) {
         console.error(error);
       }
@@ -205,6 +212,16 @@ function HomeSearch() {
             </div>
           </div>
       </div>
+    )}
+    {ValidResponse === 'NotFound' &&(
+      <div className='NotFoundYoutube'>
+        <div>
+          <p className='NotFoundYoutube-icon'><HiOutlineEmojiSad/></p>
+          <a className='NotFoundYoutube-details'>
+            <p>Not Found!</p>
+          </a>
+        </div>
+      </div> 
     )}
   </>
   );

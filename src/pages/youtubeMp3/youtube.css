@@ -199,6 +199,33 @@
 #PreviewIconPlayed{
   display: none;
 }
+
+
+.NotFoundYoutube {
+  padding: 5px;
+  border-radius: 5px;
+  grid-gap: 15px;
+  width: min(500px, 90%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.NotFoundYoutube div {
+  background-color: #d71e1e;
+  font-family: Courier;
+  display: flex;
+  padding: 5px;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 5px;
+  font-size: 25px;
+  width: 100%;
+  height: auto;
+  color: #000;
+}
+
 @media(max-width: 750px){
   .resultsYoutube {
     flex-direction: column;
