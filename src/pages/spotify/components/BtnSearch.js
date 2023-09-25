@@ -1,8 +1,7 @@
 
 import '../spotify.css'
-import { FcHighPriority} from 'react-icons/fc'
 import {FaPlay, FaPause, FaSearch,FaRedo, FaLongArrowAltDown} from 'react-icons/fa'
-import {SiSpotify} from 'react-icons/si'
+import {HiOutlineEmojiSad} from 'react-icons/hi'
 import axios from 'axios'
 import {useState} from 'react'
 var ValidMusuic = 'invalid'
@@ -146,7 +145,7 @@ function HomeSearch() {
     {ValidMusuic == 'NotFound'  &&(
       <div className='NotFoundMusic'>
         <div>
-          <p className='NotFoundMusic-icon'><FcHighPriority/></p>
+          <p className='NotFoundMusic-icon'><HiOutlineEmojiSad/></p>
           <a className='NotFoundMusic-details'>
             <p>Not Found!</p>
           </a>
