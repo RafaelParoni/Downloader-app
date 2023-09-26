@@ -7,9 +7,7 @@ import {MdFileDownload} from 'react-icons/md'
 import {useState} from 'react'
 import axios from 'axios'
 var ValidResponse = 'invalid'
-var FirtsType = ''
-var LastType = ''
-var select = ''
+var ErroValue = 'Error:'
 var reults = []
 var preview = []
 
@@ -58,6 +56,9 @@ function HomeSearch() {
         ValidResponse = 'notFound'
       }else{
         var type = ''
+        var FirtsType = ''
+        var LastType = ''
+        var preview = []
         ValidResponse = 'valid';
         type = response.data[0];
         FirtsType = type.indexOf('n.')
@@ -82,9 +83,10 @@ function HomeSearch() {
         
       }
       SearchAnimation()
-    } catch (error) {
+    } catch (err) {
       ValidResponse = 'notFound'
-      console.error(error);
+      console.error(err.message);
+      ErroValue = err.message
       SearchAnimation()
     }
     setInput('')
@@ -111,7 +113,7 @@ function HomeSearch() {
           {preview}
         </div>
         <div className='ResultsInsta-download'>
-          <p>Baixar: {select}</p>
+          <p>Baixar: </p>
           <a href={reults.urlDown}  target="_blank"> <button ><MdFileDownload/></button></a>
         </div>
         <p className='ResultsInsta-type'>
@@ -122,9 +124,9 @@ function HomeSearch() {
     {ValidResponse === 'notFound' &&(
       <div className='NotFoundInsta'>
       <div>
-        <p className='NotFoundInsta-icon'><HiOutlineEmojiSad/></p>
         <a className='NotFoundInsta-details'>
-          <p>Not Found!</p>
+          <p><HiOutlineEmojiSad/> Not Found!</p>
+          <p>{ErroValue}</p>
         </a>
       </div>
     </div> 
