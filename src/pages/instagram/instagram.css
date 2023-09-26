@@ -1,0 +1,198 @@
+/* 
+  EAEFEF
+  959BBD
+  7E45F0
+  6D6D9E
+  241531
+*/
+
+
+.InstaPage {
+  background-color: #121212;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: Courier, monospace;
+}
+.instaTitle::selection{
+  color: #000 ;
+  background: #DD2A7B  ;
+}
+.instaTitle {
+  color: #DD2A7B;
+  border-bottom: #DD2A7B  1px solid;
+  padding-inline: 5px;
+  text-align: center;
+}
+.SubTitleInsta {
+  text-align: center;
+}
+.SubTitleInsta::selection {
+  color: #000 ;
+  background: #DD2A7B ;
+}
+.SubTitleInsta a::selection {
+  color: #000 ;
+  background: #DD2A7B ;
+}
+.SubTitleInsta a {
+  border-bottom: #DD2A7B  1px solid;
+  padding-inline: 5px;
+  color: #DD2A7B ;
+  cursor: pointer;
+}
+.Insta-Search {
+  background-color: #fff;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+  border-radius: 5px;
+  width: 300px;
+  height: 50px;
+}
+.Insta-Search input{
+  outline: none;
+  border: none;
+  color: #000;
+  width: 100%;
+  font-size: 25px;
+}
+.Insta-Search input::selection {
+  color: #000;
+  background: #DD2A7B;
+}
+.Insta-Search button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  font-size: 30px;
+  color: #DD2A7B  ;
+  cursor: pointer;
+}
+.Insta-Search button:hover{
+  transition: 0.5s;
+  transform: scale(1.2);
+  background-color: #515BD4  ;
+  color: #000;
+}
+
+.Insta-Search input::placeholder {
+  color: #666666;
+}
+.Insta-Search input:focus{
+  outline: none;
+}
+.Insta-Search input:focus::placeholder{
+  color: transparent;
+}
+#LoadButton{
+  display: none;
+  animation-name: Load;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+#DefaultButton {
+  display: flex;
+}
+@keyframes Load {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(365deg);
+  }
+
+  
+}
+
+.ResultsInsta {
+  background-color: #DD2A7B;
+  width: 300px;
+  height: auto;
+  margin: 15px 0 35px 0;
+  border-radius: 5px;
+}
+.ResultsInsta img{
+  width: 250px;
+  height: auto;
+}
+.ResultsInsta-preview {
+  width: 100%;
+  height: min(100px, auto);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ResultsInsta-preview-p {
+  display: flex;
+  justify-content: center;
+  grid-gap: 5px;
+  font-size: 25px;
+}
+.ResultsInsta-download{
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+.ResultsInsta-download button{
+  border-radius: 5px;
+  border: none;
+  background-color: transparent;
+  color: #000;
+  cursor: pointer;
+  font-size: 35px;
+  text-align: center;
+}
+.ResultsInsta-download button:hover {
+  transition: 1s;
+  transform: scale(1.2);
+  background-color: #8134AF ;
+}
+.ResultsInsta-type{
+  text-align: center;
+}
+
+.NotFoundInsta {
+  padding: 5px;
+  border-radius: 5px;
+  grid-gap: 15px;
+  width: min(500px, 90%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.NotFoundInsta div p::selection {
+  background-color: #000;
+  color: #8134AF;
+}
+.NotFoundInsta div {
+  background-color: #DD2A7B;
+  font-family: Courier;
+  display: flex;
+  padding: 5px;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 5px;
+  font-size: 25px;
+  width: 100%;
+  height: auto;
+  color: #000;
+}
+
+@media(max-width: 750px){
+  .InstaPage {
+    height: 120vh
+  }
+}

@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage/homePage';
 import YoutubeMp3 from './pages/youtubeMp3/youtubeMp3';
 import Spotify from './pages/spotify/spotify';
 import Tiktok from './pages/tiktok/tiktok';
+import Insta from './pages/instagram/instagram';
 import ComeBackBtn from './Components/ComeBack'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -14,9 +15,10 @@ root.render(
   <BrowserRouter>
   <Routes>
     <Route path='/' element={<HomePage /> } />
-    <Route path='/youtube-Downloader' element={<YoutubeMp3 /> } />
-    <Route path='/spotify-Downloader' element={<Spotify /> } />
-    <Route path='/tiktok-Downloader' element={<Tiktok /> } />
+    <Route path='/Dlyoutube' element={<YoutubeMp3 /> } />
+    <Route path='/Dlspotify' element={<Spotify /> } />
+    <Route path='/ltiktok' element={<Tiktok /> } />
+    <Route path='/Dlinstagram' element={<Insta /> } />
   </Routes>
   </BrowserRouter>
 );
