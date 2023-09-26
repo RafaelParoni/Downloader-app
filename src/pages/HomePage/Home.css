@@ -15,6 +15,9 @@
   flex-direction: column;
   color: #fff;
 }
+h3 {
+  text-align: center;
+}
 .options {
   display: flex;
   align-items: center;
@@ -46,6 +49,10 @@
   background-color: #1eacd7;
   color: #000;
 }
+.insta {
+  background-color: #DD2A7B;
+  color: #000;
+}
 .BtnTyps:hover{
   transition: 1s;
   transform: scale(1.2);
@@ -61,4 +68,14 @@
   align-items: center;
   grid-gap: 5px;
   filter: opacity(0.5);
+}
+
+
+@media(max-width: 600px){
+  .BtnTyps a {
+    display: none;
+  }
+  .BtnTyps {
+    font-size: 50px;
+  }
 }

@@ -3,6 +3,7 @@ import './Home.css'
 import SpotifyBtn from './components/spotifyBtn';
 import YoutubeBtn from './components/youtubeBtn';
 import TiktokBtn from './components/tiktokBtn';
+import InstaBtn from './components/instagram';
 import ComeBackBtn from '../../Components/ComeBack'
 
 function HomePage() {
@@ -15,6 +16,7 @@ function HomePage() {
           <SpotifyBtn/>
           <YoutubeBtn/>
           <TiktokBtn/>
+          <InstaBtn/>
         </div>
         
     </div>

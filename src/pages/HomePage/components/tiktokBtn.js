@@ -3,11 +3,11 @@ import {SiTiktok} from 'react-icons/si'
 
 function SpotifyBtn(){
     function href(){
-        window.location = '/tiktok-Downloader'
+        window.location = '/Dltiktok'
     }
     return(
         <>
-        <p className='BtnTyps tiktok' onClick={href}  > <SiTiktok/> Tiktok</p>
+        <p className='BtnTyps tiktok' onClick={href}  > <SiTiktok/> <a>Tiktok</a></p>
         </>
     )
 }

@@ -17,7 +17,7 @@ root.render(
     <Route path='/' element={<HomePage /> } />
     <Route path='/Dlyoutube' element={<YoutubeMp3 /> } />
     <Route path='/Dlspotify' element={<Spotify /> } />
-    <Route path='/ltiktok' element={<Tiktok /> } />
+    <Route path='/Dltiktok' element={<Tiktok /> } />
     <Route path='/Dlinstagram' element={<Insta /> } />
   </Routes>
   </BrowserRouter>

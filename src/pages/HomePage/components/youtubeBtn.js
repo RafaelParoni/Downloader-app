@@ -4,11 +4,11 @@ import {SiYoutube} from 'react-icons/si'
 function SpotifyBtn(){
 
     function href(){
-        window.location = '/youtube-Downloader'
+        window.location = '/Dlyoutube'
     }
     return(
         <>
-        <p  className='BtnTyps youtube' onClick={href}  > <SiYoutube/> Youtube</p>
+        <p  className='BtnTyps youtube' onClick={href}  > <SiYoutube/> <a>Youtube</a></p>
         </>
     )
 }
