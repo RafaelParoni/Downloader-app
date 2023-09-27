@@ -55,31 +55,8 @@ function HomeSearch() {
       if(response.data.length == 0){
         ValidResponse = 'notFound'
       }else{
-        var type = ''
-        var FirtsType = ''
-        var LastType = ''
-        var preview = []
         ValidResponse = 'valid';
-        type = response.data[0];
-        FirtsType = type.indexOf('n.')
-        FirtsType = FirtsType + 2
-        LastType = type.lastIndexOf('?')
-        type = type.slice(FirtsType, LastType)
-
-        reults = {type: type, urlDown: response.data[0]}
-        if(input.includes('/reels/') === true){
-          preview.push(
-            <p className='ResultsInsta-preview-p'> <HiOutlineEmojiSad/> No preview reels</p>
-          )
-        }else if(input.includes('/reel/') == true){
-          preview.push(
-            <p className='ResultsInsta-preview-p'> <HiOutlineEmojiSad/> No preview vídeo</p>
-          )
-        }else {
-          preview.push(
-            <img src={response.data[0]}/>
-          )
-        }
+        reults = {type: 'type', urlDown: response.data[0]}
         
       }
       SearchAnimation()
@@ -109,9 +86,6 @@ function HomeSearch() {
     
     {ValidResponse === 'valid' &&(
       <div className='ResultsInsta'>
-        <div className='ResultsInsta-preview'>
-          {preview}
-        </div>
         <div className='ResultsInsta-download'>
           <p>Baixar: </p>
           <a href={reults.urlDown}  target="_blank"> <button ><MdFileDownload/></button></a>
