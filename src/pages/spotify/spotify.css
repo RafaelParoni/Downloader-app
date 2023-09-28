@@ -131,8 +131,8 @@
     display: flex;
     padding: 5px;
     border-radius: 5px;
-    justify-content: start;
-    align-items:start;
+    justify-content: flex-start;
+    align-items: flex-start;
     grid-gap: 5px;
     width: 100%;
     height: auto;
@@ -142,7 +142,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: start;
+    align-items: flex-start;
     padding-left: 5px;
     padding-right: 5px;
     padding: 0 0 10px 0;
