@@ -5,6 +5,7 @@ import YoutubeBtn from './components/youtubeBtn';
 import TiktokBtn from './components/tiktokBtn';
 import InstaBtn from './components/instagram';
 import ComeBackBtn from '../../Components/ComeBack'
+import Midia from '../midia/midia';
 
 function HomePage() {
   document.title = 'Home'
@@ -18,6 +19,8 @@ function HomePage() {
           <TiktokBtn/>
           <InstaBtn/>
         </div>
+
+        <Midia/>
         
     </div>
   );

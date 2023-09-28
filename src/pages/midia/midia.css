@@ -1,0 +1,18 @@
+.midias {
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 5px;
+    padding: 5px;
+    font-size: 30px;
+}
+
+.icon {
+    cursor: pointer;
+}
+.icon:hover{
+    transition: 0.5s;
+    transform: scale(1.2);
+}
