@@ -88,7 +88,7 @@ function HomeSearch() {
       <div className='ResultsInsta'>
         <div className='ResultsInsta-download'>
           <p>Baixar: </p>
-          <a href={reults.urlDown}  target="_blank"> <button ><MdFileDownload/></button></a>
+          <a href={reults.urlDown} download={true}  > <button ><MdFileDownload/></button></a>
         </div>
         <p className='ResultsInsta-type'>
           Type: {reults.type}

@@ -14,7 +14,7 @@ function BtnSearch(){
 
     function SearchAnimation(value){
       
-      if(value == 'start'){
+      if(value === 'start'){
         document.getElementById(`LoadSearch`).style.display = 'flex'
         document.getElementById(`DefaultSearch`).style.display = 'none' 
         
@@ -62,7 +62,7 @@ function BtnSearch(){
         if(VideoDescri.length > 45){
           VideoDescri = VideoDescri.slice(0,45)
           VideoDescri = VideoDescri.concat("", "...")
-        }else if(VideoDescri.length == 0) {
+        }else if(VideoDescri.length === 0) {
           VideoDescri= 'sem descrição'
         }else{
           VideoDescri = response.data.description[0]
@@ -96,16 +96,16 @@ function BtnSearch(){
       <div className='results'>
         <div className='ResultsVideo'>
           <div className='ResultsVideo-preview'>
-            <img src={VideoInfo.thumb}/>
+            <img  alt='' src={VideoInfo.thumb}/>
           </div>
           <div className='ResultsVideo-details'>
             <h3>{VideoInfo.descri}</h3>
             <div className='ResultsVideo-channel'>
-              <img  src={VideoInfo.avatar}/>
+              <img  alt='' src={VideoInfo.avatar}/>
               <p> {VideoInfo.author} </p>
             </div>
             <div className='ResultsVideo-download'>
-                <button onClick={()=> download(VideoInfo.videoNoWater)}> <FaVideoSlash/> Vídeo sem marca d'água </button>
+                <button  onClick={()=> download(VideoInfo.videoNoWater)}> <FaVideoSlash/> Vídeo sem marca d'água </button>
                 <button onClick={()=> download(VideoInfo.originalVideo)}> <FaVideo/> Vídeo com marca d'água</button>
                 <button onClick={()=> download(VideoInfo.audio)}> <FaFileAudio/> Som do vídeo</button>
             </div>
