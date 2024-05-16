@@ -107,7 +107,7 @@ function HomeSearch() {
    
         }else{
           Mp4Info = {
-            VideoQuality: response.data.formats[2].qualityLabel,
+            VideoQuality: response.data.formats[2].url,
             VideoUrl: response.data.formats[2].url,
           }
           videoInfo = {
